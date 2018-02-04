@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Destination</title>
+</head>
+<body>
+    <a href="/logout"><button>Logout</button></a>
+    <a href = "/home"><button>Home</button></a>
+    <h1> {{tripview.destination}}</h1>
+    <h3> Planned by: {{tripview.added_by.name}} </h3>
+    <h3> Description: {{tripview.plan}}</h3>
+    <h3> Travel Date From: {{tripview.start_date}}</h3>
+    <h3> Travel Date To: {{tripview.end_date}}</h3>
+   
+    <h2> Other users' joining the trip </h2>
+    {% if users_joining %}
+        {% for user in users_joining %}
+            <p>{{ user.name }}</p>
+        {% endfor %}
+    {% endif %}
+</body>
+</html>

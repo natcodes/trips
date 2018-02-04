@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> Where to! </title>
+</head>
+<body>
+    <h1> Add a Trip </h1>
+    <a href = "/home"><button>Home</button></a>
+    <a href = "/logout"><button>Logout</button></a>
+    <form action="/addtrip" method = "POST">
+        {% csrf_token %}
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == "add destination error" %}
+                <p class='err'>{{ message }}</p>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        <p>Destination: <input type="text" name="destination"></p>
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == "add plan error" %}
+                <p class='err'>{{ message }}</p>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        <p>Description: <input type="text" name="plan"></p>
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == "add start_date error" %}
+                <p class='err'>{{ message }}</p>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        <p>Travel Date From: <input type="date" name="start_date"></p>
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == "add end_date error" %}
+                <p class='err'>{{ message }}</p>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+        <p>Travel Date To: <input type="date" name="end_date"></p>
+        <p><input type="submit" name="Add"></p>
+    </form>
+</body>
+</html>
